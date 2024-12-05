@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="lista_tareas.planet_kanban_view">
+            <field name="name">Mostrar kanban</field>
+            <field name="model">lista_tareas.lista_tareas</field>
+            <field name="arch" type="xml">
+            <kanban>
+                <field name="tarea"/>
+                <field name="prioridad"/>
+                <field name="urgente"/>
+                <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_card">
+                        <div class="oe_kanban_details">
+                            <h4>
+                            <a type="edit">
+                                <field name="tarea"/>
+                                <field name="prioridad"/>
+                                <field name="urgente"/>
+                            </a>
+                            </h4>
+                        </div>
+                    </div>
+                </t>
+                </templates>
+            </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

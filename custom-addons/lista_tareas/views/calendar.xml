@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="lista_tareas.travel_calendar">
+            <field name="name">Calendario de Tareas</field>
+            <field name="model">lista_tareas.lista_tareas</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendario de Tareas"
+                          date_start="fecha_tarea"
+                          color="urgente">
+                    <field name="fecha_tarea"/>
+                    <field name="tarea"/>
+                </calendar>
+            </field>
+        </record>
+    </data>
+</odoo>

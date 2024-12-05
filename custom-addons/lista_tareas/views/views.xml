@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="lista_tareas.list">
+      <field name="name">lista_tareas list</field>
+      <field name="model">lista_tareas.lista_tareas</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="tarea"/>
+          <field name="prioridad"/>
+          <field name="urgente"/>
+          <field name="realizada"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="lista_tareas.kanban">
+      <field name="name">lista_tareas kanban</field>
+      <field name="model">lista_tareas.lista_tareas</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <field name="tarea"/>
+          <field name="prioridad"/>
+          <field name="urgente"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_card">
+                <div class="oe_kanban_details">
+                  <h4>
+                    <a type="edit">
+                      <field name="tarea"/>
+                      <field name="prioridad"/>
+                      <field name="urgente"/>
+                    </a>
+                  </h4>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <record id="lista_tareas.travel_calendar" model="ir.ui.view">
+      <field name="name">Calendario de Tareas</field>
+      <field name="model">lista_tareas.lista_tareas</field>
+      <field name="arch" type="xml">
+          <calendar string="Calendario de Tareas" date_start="fecha_tarea">
+              <field name="fecha_tarea"/>
+              <field name="tarea"/>
+          </calendar>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="lista_tareas.action_window">
+      <field name="name">Listado de tareas pendientes</field>
+      <field name="res_model">lista_tareas.lista_tareas</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="lista_tareas.action_kanban">
+      <field name="name">Tareas en Kanban</field>
+      <field name="res_model">lista_tareas.lista_tareas</field>
+      <field name="view_mode">kanban</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="lista_tareas.travel_calendar_action">
+    <field name="name">Calendario de Tareas</field>
+    <field name="res_model">lista_tareas.lista_tareas</field>
+    <field name="view_mode">calendar</field>
+    <field name="view_id" ref="lista_tareas.travel_calendar"/>
+    </record>
+
+    <menuitem name="Listado de tareas" id="lista_tareas.menu_root"/>
+    <menuitem name="Opciones Lista tareas" id="lista_tareas.menu_1" parent="lista_tareas.menu_root"/>
+    <menuitem name="Mostrar lista" id="lista_tareas.menu_1_list" parent="lista_tareas.menu_1" action="lista_tareas.action_window"/>
+    <menuitem name="Vista Kanban" id="lista_tareas.menu_kanban" parent="lista_tareas.menu_1" action="lista_tareas.action_kanban"/>
+    <menuitem name="Calendario" id="lista_tareas.travel_calendar_menu" parent="lista_tareas.menu_1" action="lista_tareas.travel_calendar_action"/>
+  </data>
+</odoo>

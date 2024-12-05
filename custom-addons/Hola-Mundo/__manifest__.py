@@ -1,0 +1,3 @@
+{
+    'name': 'Hola Mundo Clase'
+}
